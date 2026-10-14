@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Caché - Taller</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #resultado {
+            font-size: 18px;
+            line-height: 1.5;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            min-height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Comparador de Rendimiento</h2>
+        <p>Base de Datos vs Caché en Memoria (Spring Boot)</p>
+        <button id="btn-test">Ejecutar Prueba</button>
+        <div id="resultado">Haz clic en el botón para iniciar.</div>
+    </div>
+
+    <script>
+        document.getElementById('btn-test').addEventListener('click', () => {
+            const btn = document.getElementById('btn-test');
+            const resultado = document.getElementById('resultado');
+
+            btn.disabled = true;
+            resultado.innerHTML = "Ejecutando llamadas al backend... <br><small>(Esto tomará unos segundos por la latencia simulada)</small>";
+
+            fetch('http://localhost:8080/test-cache')
+                .then(response => {
+                    if (!response.ok) throw new Error("Error en la red");
+                    return response.text();
+                })
+                .then(data => {
+                    resultado.innerHTML = data;
+                })
+                .catch(error => {
+                    resultado.innerHTML = "<span style='color: red;'>Error: No se pudo conectar. Verifica que Spring Boot esté corriendo en el puerto 8080.</span>";
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                });
+        });
+    </script>
+
+</body>
+</html>
