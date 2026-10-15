@@ -34,22 +34,20 @@ Instrucciones de Ejecución
 
 1. Ejecutar el Backend (Spring Boot)
 
-Abre el proyecto en tu IDE de preferencia (IntelliJ IDEA, Eclipse, VS Code).
+Abrir el proyecto
 
-Asegúrate de que las dependencias de Maven se hayan descargado correctamente.
+Verificar que las dependencias de Maven se hayan descargado correctamente.
 
-Ejecuta la clase Taller2Application.java.
+Ejecutar la clase Taller2Application.java.
 
-Observa la consola: verás un mensaje indicando que se están insertando los 400,000 registros.
+En consola: verificar un mensaje indicando que se están agregando los 1.000,000 registros.
 
 El servidor estará disponible en el puerto 8080.
 
 2. Ejecutar el Frontend
 
-Ve a la carpeta donde guardaste tu archivo index.html.
+Abrir a la carpeta donde guardaste tu archivo index.html.
 
-Haz doble clic sobre el archivo para abrirlo en cualquier navegador web moderno (Chrome, Firefox, Edge).
+Abrir el archivo.
 
-Haz clic en el botón "Ejecutar Prueba".
-
-(Nota: La primera prueba tomará un par de segundos debido a las pausas forzadas para estabilizar el recolector de basura de Java).
+Hacer clic en el botón "Ejecutar Prueba".
